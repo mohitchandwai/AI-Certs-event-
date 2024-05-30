@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Certs Event</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      background-color: #FFB6C1; /* Baby pink color */
+      text-align: center; /* Center align all content */
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    header, section, footer {
+      padding: 20px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section -->
+  <header>
+    <div class="container">
+      <h1>AI Certs Event</h1>
+      <p>Join us for an exciting event!</p>
+    </div>
+  </header>
+
+  <!-- Main Content Section -->
+  <section id="main-content">
+    <div class="container">
+      <h2>About the Event</h2>
+      <p>This is where you can provide information about the event.</p>
+      <p>Event Date: <span id="event-date"></span></p>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 AI Certs. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- JavaScript for Countdown Timer -->
+  <script>
+    // Set the event date (YYYY-MM-DD format)
+    const eventDate = new Date('2024-06-15').getTime();
+
+    // Update the countdown every second
+    const countdown = setInterval(function() {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+      
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById('event-date').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById('event-date').innerHTML = 'Event is happening now!';
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
